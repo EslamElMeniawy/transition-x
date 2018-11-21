@@ -37,33 +37,39 @@ class CartDetailFragment : Fragment() {
     private val cartItem by lazy { CartDetailFragmentArgs.fromBundle(arguments).cartItem }
 
     private fun applyTransition() {
-        sharedElementEnterTransition = transitionSet {
-            transitionSet {
-                changeImage()
-                moveResize()
-                changeClipBounds()
-                scaleRotate()
-                ease {
-                    standardEasing
-                }
-                duration = 375
-                +cartItem.cartImageTransitionName()
-            }
-            transitionSet {
-                ease {
-                    standardEasing
-                }
-                moveResize()
-                scaleRotate()
-                add(cartItem.name, cartItem.price)
-                duration = 375
-            }
-        }
+        /* sharedElementEnterTransition = transitionSet {
+             transitionSet {
+                 changeImage()
+                 moveResize()
+                 changeClipBounds()
+                 scaleRotate()
+                 ease {
+                     standardEasing
+                 }
+                 duration = 375
+                 +cartItem.cartImageTransitionName()
+             }
+             transitionSet {
+                 ease {
+                     standardEasing
+                 }
+                 moveResize()
+                 scaleRotate()
+                 add(cartItem.name, cartItem.price)
+                 duration = 375
+             }
+         }*/
         enterTransition = transitionSet {
             slide()
-            fade()
             ease {
                 decelerateEasing
+            }
+        }
+
+        exitTransition = transitionSet {
+            slide()
+            ease {
+                accelerateEasing
             }
         }
     }
